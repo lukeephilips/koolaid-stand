@@ -1,23 +1,22 @@
 <h1>Elder Davie's Koolaid Kart</h1>
 <h1 *ngFor="let juice of freshjuice">{{juice.name}}</h1>
-<div class="">
+<div class="" *ngSwitch="addKeg">
+    <div class="form-group">
 
-  <div class="form-group">
+    <label for="name">Name</label>
+    <input [(ngModel)]="name" id="name">
 
-  <label for="name">Name</label>
-  <input [(ngModel)]="name" id="name">
+    <label for="flavor">Flavor town</label>
+    <input [(ngModel)]="flavor" id="flavor">
 
-  <label for="flavor">Flavor town</label>
-  <input [(ngModel)]="flavor" id="flavor">
+    <label for="price">Price</label>
+    <input [(ngModel)]="price" id="price">
 
-  <label for="price">Price</label>
-  <input [(ngModel)]="price" id="price">
+    <label for="secretIngredient">Secret Ingredient</label>
+    <input [(ngModel)]="secretIngredient" id="secretIngredient">
 
-  <label for="secretIngredient">Secret Ingredient</label>
-  <input [(ngModel)]="secretIngredient" id="secretIngredient">
+    <button (click)="newJuice()">Add</button>
+  </div>
 
-  <button (click)="newJuice()">Add</button>
-</div>
 
-<h1>{{name}}</h1>
 </div>

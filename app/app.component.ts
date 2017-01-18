@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Koolaid } from './koolaid';
+import { JuiceService } from './juice.service';
 
 
 @Component({
   selector: 'app-root',
+  providers: [JuiceService],
   templateUrl: './app/app.component.html'
 })
 
@@ -13,13 +15,19 @@ export class AppComponent {
   price: number;
   secretIngredient: string;
 
-  freshjuice: Koolaid[] = [new Koolaid("Juicy Fruit", "Fruity juice", 5,"cyanide")];
+  freshjuice: Koolaid[];
 
+  constructor(private juiceService: JuiceService) {}
 
+  getJuice() {
+    this.freshjuice = this.juiceService.getJuice();
+  }
+  ngOnInit(): void {
+      this.getJuice();
+    }
   newJuice() {
     console.log(this.name)
     this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
     console.log(this.freshjuice);
   }
-
-}
+};
