@@ -1,7 +1,7 @@
 <h1>Elder Davie's Koolaid Kart</h1>
-<h1 *ngFor="let juice of freshjuice">{{juice.name}}</h1>
-<div class="" *ngSwitch="addKeg">
-    <div class="form-group">
+<h1 *ngFor="let juice of freshjuice" (click)="editKeg(juice)">{{juice.name}}</h1>
+<div class="" [ngSwitch]="addKeg">
+    <div class="form-group" *ngSwitchCase="true">
 
     <label for="name">Name</label>
     <input [(ngModel)]="name" id="name">
@@ -14,9 +14,24 @@
 
     <label for="secretIngredient">Secret Ingredient</label>
     <input [(ngModel)]="secretIngredient" id="secretIngredient">
-
-    <button (click)="newJuice()">Add</button>
+    <button (click)="newJuice()" class="btn">Add</button>
   </div>
+  <div class="" *ngSwitchDefault>
+    <button (click)="showAdd()" class="btn">Add</button>
+  </div>
+</div>
 
+<div class="" *ngIf="selectedKeg">
+  <label for="name">Name</label>
+  <input [(ngModel)]="selectedKeg.name" id="name">
 
+  <label for="flavor">Flavor town</label>
+  <input [(ngModel)]="selectedKeg.flavor" id="flavor">
+
+  <label for="price">Price</label>
+  <input [(ngModel)]="selectedKeg.price" id="price">
+
+  <label for="secretIngredient">Secret Ingredient</label>
+  <input [(ngModel)]="selectedKeg.secretIngredient" id="secretIngredient">
+  <button (click)="hideEdit()" class="btn">Save</button>
 </div>

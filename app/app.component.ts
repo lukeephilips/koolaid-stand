@@ -14,9 +14,11 @@ export class AppComponent {
   flavor: string;
   price: number;
   secretIngredient: string;
+  addKeg: boolean = false;
+  selectedKeg: Koolaid = null;
+
 
   freshjuice: Koolaid[];
-
   constructor(private juiceService: JuiceService) {}
 
   getJuice() {
@@ -24,10 +26,24 @@ export class AppComponent {
   }
   ngOnInit(): void {
       this.getJuice();
-    }
+  }
+  showAdd() {
+    this.addKeg = true;
+  }
+  hideAdd() {
+    this.addKeg = false;
+  }
+  editKeg(keg){
+    this.selectedKeg = keg;
+    console.log(keg);
+  }
+  hideEdit() {
+    this.selectedKeg = null;
+  }
   newJuice() {
     console.log(this.name)
     this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
     console.log(this.freshjuice);
+    this.addKeg = false;
   }
 };
