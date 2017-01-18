@@ -1,37 +1,77 @@
-<h1>Elder Davie's Koolaid Kart</h1>
-<h1 *ngFor="let juice of freshjuice" (click)="editKeg(juice)">{{juice.name}}</h1>
-<div class="" [ngSwitch]="addKeg">
-    <div class="form-group" *ngSwitchCase="true">
+<div class="container">
+  <h1>Elder Davie's Koolaid Kart</h1>
 
-    <label for="name">Name</label>
-    <input [(ngModel)]="name" id="name">
+  <!-- Add Keg -->
+    <div class="" [ngSwitch]="addKeg">
+        <div class="form-group" *ngSwitchCase="true">
 
-    <label for="flavor">Flavor town</label>
-    <input [(ngModel)]="flavor" id="flavor">
+        <label for="name">Name</label>
+        <input [(ngModel)]="name" id="name">
 
-    <label for="price">Price</label>
-    <input [(ngModel)]="price" id="price">
+        <label for="flavor">Flavor town</label>
+        <input [(ngModel)]="flavor" id="flavor">
 
-    <label for="secretIngredient">Secret Ingredient</label>
-    <input [(ngModel)]="secretIngredient" id="secretIngredient">
-    <button (click)="newJuice()" class="btn">Add</button>
-  </div>
-  <div class="" *ngSwitchDefault>
-    <button (click)="showAdd()" class="btn">Add</button>
+        <label for="price">Price</label>
+        <input [(ngModel)]="price" id="price">
+
+        <label for="secretIngredient">Secret Ingredient</label>
+        <input [(ngModel)]="secretIngredient" id="secretIngredient">
+        <button (click)="newJuice()" class="btn">Add</button>
+      </div>
+      <div class="" *ngSwitchDefault>
+        <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>
+      </div>
+    </div>
+
+<!-- show Keg -->
+<div class="row">
+  <div class="panel col-sm-4" *ngFor="let juice of freshjuice">
+    <div class="panel-heading primaryColor" (click)="editKeg(juice)">
+      <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-8">
+          <h3>Flavor: {{juice.flavor}}</h3>
+          <span>Secret Ingredient: {{juice.secretIngredient}}</span>
+          <div class="kegQuantity">
+            <span [class]="kegLevel(juice.quantity)" >{{juice.quantity}}</span><span> ounces remaining</span>
+          </div>
+          <h3>${{juice.price}}</h3>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+      <div class="row">
+
+        <label for="size">Select a size</label>
+        <div class="input-group">
+          <select class="form-control" id="size" [(ngModel)]="size" name="size">
+            <option *ngFor="let size of displaySizes" [value]="size">{{size}}</option>
+          </select>
+          <span class="input-group-btn"><button (click)="getServed(juice, size)" class="btn">Purchase</button></span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="" *ngIf="selectedKeg">
-  <label for="name">Name</label>
-  <input [(ngModel)]="selectedKeg.name" id="name">
 
-  <label for="flavor">Flavor town</label>
-  <input [(ngModel)]="selectedKeg.flavor" id="flavor">
 
-  <label for="price">Price</label>
-  <input [(ngModel)]="selectedKeg.price" id="price">
+<!-- Update Keg -->
+  <div class="" *ngIf="selectedKeg">
+    <label for="name">Name</label>
+    <input [(ngModel)]="selectedKeg.name" id="name">
 
-  <label for="secretIngredient">Secret Ingredient</label>
-  <input [(ngModel)]="selectedKeg.secretIngredient" id="secretIngredient">
-  <button (click)="hideEdit()" class="btn">Save</button>
+    <label for="flavor">Flavor town</label>
+    <input [(ngModel)]="selectedKeg.flavor" id="flavor">
+
+    <label for="price">Price</label>
+    <input [(ngModel)]="selectedKeg.price" id="price">
+
+    <label for="secretIngredient">Secret Ingredient</label>
+    <input [(ngModel)]="selectedKeg.secretIngredient" id="secretIngredient">
+    <button (click)="hideEdit()" class="btn">Save</button>
+  </div>
 </div>

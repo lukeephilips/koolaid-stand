@@ -16,7 +16,9 @@ export class AppComponent {
   secretIngredient: string;
   addKeg: boolean = false;
   selectedKeg: Koolaid = null;
-
+  size: string = null;
+  sizes: Sizes = new Sizes();
+  displaySizes: any[] = Object.keys(this.sizes);
 
   freshjuice: Koolaid[];
   constructor(private juiceService: JuiceService) {}
@@ -26,7 +28,9 @@ export class AppComponent {
   }
   ngOnInit(): void {
       this.getJuice();
+      console.log(this.displaySizes)
   }
+
   showAdd() {
     this.addKeg = true;
   }
@@ -35,15 +39,43 @@ export class AppComponent {
   }
   editKeg(keg){
     this.selectedKeg = keg;
-    console.log(keg);
   }
   hideEdit() {
     this.selectedKeg = null;
   }
+
   newJuice() {
-    console.log(this.name)
     this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
-    console.log(this.freshjuice);
     this.addKeg = false;
   }
+  getServed(keg: Koolaid, purchasedSize: string){
+    console.log(purchasedSize)
+
+    keg.quantity -= this.sizes[purchasedSize];
+  }
+
+  kegLevel(kegLevel: number) {
+    if (kegLevel <= 64) {
+      return "dangerouslyLow";
+    } else if (kegLevel <= 1000) {
+      return "keepDrinking";
+    } else {
+      return "bringAllYrFwendz";
+    }
+  }
+  surgePrice(keg){
+    if (keg.quantity >= 1000)
+    return keg.price *
+  }
+
 };
+
+export class Sizes {
+  constructor() {};
+  public taster: number = 4;
+  public pint: number = 12;
+  public howler: number = 32;
+  public growler: number = 32;
+  public bucket: number = 640;
+  public keg: number = 1984;
+}
