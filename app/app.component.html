@@ -2,21 +2,10 @@
   <h1>Elder Davie's Koolaid Kart</h1>
 
   <!-- Add Keg -->
-<new-juice [freshjuice]="freshjuice"></new-juice>
+  <new-juice (newJuiceSender)="addJuice($event)" ></new-juice>
 
     <!-- filter Keg -->
-  <div class="row">
-    <div class="input-group">
-      <select class="form-control" id="filter" (change)="filter($event.target.value)" name="filter">
-        <option value="all">All</option>
-        <option value="Cyanide">Cyanide</option>
-        <option value="Codeine">Codeine</option>
-        <option value="LSD" >LSD</option>
-        <!-- <option *ngFor="let ingredient of displayIngredients" [value]="ingredient">{{ingredient}}</option> -->
-      </select>
-      <span class="input-group-btn" (click)="filter(ingredient)"><button  class="btn">Filter</button></span>
-    </div>
-  </div>
+    <filter-juice (filterSender)="filter($event)"></filter-juice>
 
 <!-- show Keg -->
 <div class="row">

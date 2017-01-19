@@ -5,6 +5,7 @@ import { AppComponent }   from './app.component';
 import { FilterPipe } from './filter.pipe';
 import { EditJuiceComponent } from './edit-juice.component';
 import { NewJuiceComponent } from './new-juice.component';
+import { FilterJuiceComponent } from './filter-juice.component';
 
 
 
@@ -13,7 +14,7 @@ import { NewJuiceComponent } from './new-juice.component';
     BrowserModule,
     FormsModule
  ],
-  declarations: [ AppComponent, FilterPipe, EditJuiceComponent, NewJuiceComponent ],
+  declarations: [ AppComponent, FilterPipe, EditJuiceComponent, NewJuiceComponent, FilterJuiceComponent ],
   bootstrap:    [ AppComponent ]
 })
 

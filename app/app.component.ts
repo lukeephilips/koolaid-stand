@@ -3,6 +3,8 @@ import { Koolaid } from './koolaid';
 import { JuiceService } from './juice.service';
 import { EditJuiceComponent } from './edit-juice.component';
 import { NewJuiceComponent } from './new-juice.component';
+import { FilterJuiceComponent } from './new-juice.component';
+
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,7 @@ import { NewJuiceComponent } from './new-juice.component';
 })
 
 export class AppComponent {
-  name: string;
-  flavor: string;
-  price: number;
-  secretIngredient: string;
+
   selectedKeg: Koolaid = null;
   size: string = null;
   sizes: Sizes = new Sizes();
@@ -38,7 +37,9 @@ export class AppComponent {
 
   editKeg(keg){
     this.selectedKeg = keg;
-    console.log(this.selectedKeg)
+  }
+  addJuice(newJuice){
+      this.freshjuice.push(newJuice);
   }
 
 

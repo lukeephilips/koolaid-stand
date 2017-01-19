@@ -9,6 +9,8 @@ import { Koolaid } from './koolaid';
 
 export class NewJuiceComponent{
   @Input() freshjuice: Koolaid[];
+  @Output() newJuiceSender = new EventEmitter();
+
   addKeg: boolean = false;
   name: string;
   flavor: string;
@@ -16,7 +18,8 @@ export class NewJuiceComponent{
   secretIngredient: string;
 
   newJuice() {
-    this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
+    var newJuice: Koolaid = new Koolaid(this.name, this.flavor, this.price, this.secretIngredient);
+    this.newJuiceSender.emit(newJuice);
     this.addKeg = false;
   }
   hideAdd() {
