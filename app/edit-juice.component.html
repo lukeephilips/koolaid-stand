@@ -1,0 +1,14 @@
+<div class="" *ngIf="selectedKeg">
+  <label for="name">Name</label>
+  <input [(ngModel)]="childSelectedKeg.name" id="name">
+
+  <label for="flavor">Flavor town</label>
+  <input [(ngModel)]="childSelectedKeg.flavor" id="flavor">
+
+  <label for="price">Price</label>
+  <input [(ngModel)]="childSelectedKeg.price" id="price">
+
+  <label for="secretIngredient">Secret Ingredient</label>
+  <input [(ngModel)]="childSelectedKeg.secretIngredient" id="secretIngredient">
+  <button (click)="hideEdit()" class="btn">Save</button>
+</div>

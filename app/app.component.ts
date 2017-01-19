@@ -44,6 +44,7 @@ export class AppComponent {
   }
   editKeg(keg){
     this.selectedKeg = keg;
+    console.log(this.selectedKeg)
   }
   hideEdit() {
     this.selectedKeg = null;
@@ -87,7 +88,6 @@ filter(ingredient){
   this.filterAttribute = ingredient;
 }
 kegMeter(quantity: number){
-  console.log(quantity)
   return ((quantity / 1984) * 100);
 }
 

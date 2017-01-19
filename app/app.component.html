@@ -83,18 +83,5 @@
 
 
 <!-- Update Keg -->
-  <div class="" *ngIf="selectedKeg">
-    <label for="name">Name</label>
-    <input [(ngModel)]="selectedKeg.name" id="name">
-
-    <label for="flavor">Flavor town</label>
-    <input [(ngModel)]="selectedKeg.flavor" id="flavor">
-
-    <label for="price">Price</label>
-    <input [(ngModel)]="selectedKeg.price" id="price">
-
-    <label for="secretIngredient">Secret Ingredient</label>
-    <input [(ngModel)]="selectedKeg.secretIngredient" id="secretIngredient">
-    <button (click)="hideEdit()" class="btn">Save</button>
-  </div>
+<edit-juice [childSelectedKeg]="selectedKeg"></edit-juice>
 </div>
