@@ -3,16 +3,16 @@
       <div class="form-group" *ngSwitchCase="true">
 
       <label for="name">Name</label>
-      <input [(ngModel)]="name" id="name">
+      <input #name id="name">
 
       <label for="flavor">Flavor town</label>
-      <input [(ngModel)]="flavor" id="flavor">
+      <input #flavor id="flavor">
 
       <label for="price">Price</label>
-      <input [(ngModel)]="price" id="price">
+      <input #price id="price">
 
       <label for="secretIngredient">Secret Ingredient</label>
-      <input [(ngModel)]="secretIngredient" id="secretIngredient">
+      <input #secretIngredient id="secretIngredient">
       <button (click)="newJuice()" class="btn">Add</button>
     </div>
     <div class="" *ngSwitchDefault>
