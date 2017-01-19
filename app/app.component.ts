@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Koolaid } from './koolaid';
 import { JuiceService } from './juice.service';
+import { EditJuiceComponent } from './edit-juice.component';
+
 
 
 @Component({

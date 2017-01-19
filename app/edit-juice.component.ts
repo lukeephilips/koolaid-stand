@@ -10,7 +10,7 @@ import { Koolaid } from './koolaid';
 export class EditJuiceComponent{
   @Input() childSelectedKeg: Koolaid;
 
-  // hideEdit() {
-  //   this.childSelectedKeg = null;
-  // }
+  hideEdit() {
+    this.childSelectedKeg = null;
+  }
 }
