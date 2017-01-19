@@ -13,7 +13,7 @@
 
       <label for="secretIngredient">Secret Ingredient</label>
       <input #secretIngredient id="secretIngredient">
-      <button (click)="newJuice()" class="btn">Add</button>
+      <button (click)="newJuice(name.value, flavor.value, price.value, secretIngredient.value)" class="btn">Add</button>
     </div>
     <div class="" *ngSwitchDefault>
       <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>

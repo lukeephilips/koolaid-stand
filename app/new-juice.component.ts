@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Koolaid } from './koolaid';
+import { FormsModule }  from '@angular/forms';
+
 
 @Component({
   selector: 'new-juice',
@@ -17,8 +19,8 @@ export class NewJuiceComponent{
   price: number;
   secretIngredient: string;
 
-  newJuice() {
-    var newJuice: Koolaid = new Koolaid(this.name, this.flavor, this.price, this.secretIngredient);
+  newJuice(name, flavor, price, secretIngredient) {
+    var newJuice: Koolaid = new Koolaid(name, flavor, price, secretIngredient);
     this.newJuiceSender.emit(newJuice);
     this.addKeg = false;
   }

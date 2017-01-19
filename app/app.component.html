@@ -8,7 +8,7 @@
   <filter-juice (filterSender)="filter($event)"></filter-juice>
 
   <!-- show Keg -->
-  <juices [freshjuice]="freshjuice" [filterAttribute]="filterAttribute"></juices>
+  <juices [freshjuice]="freshjuice" [filterAttribute]="filterAttribute" [sizes]="sizes" (selectedKegSender)="editKeg($event)"></juices>
   <!-- <div class="row">
     <div *ngFor="let juice of freshjuice | filter:filterAttribute">
       <div class="panel col-sm-4">

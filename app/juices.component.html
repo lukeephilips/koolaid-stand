@@ -4,7 +4,7 @@
 
     <div class="panel col-sm-4">
 
-       <div class="panel-heading primaryColor" (click)="editKeg(juice)">
+       <div class="panel-heading primaryColor" (click)="selectKeg(juice)">
         <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
       </div>
       <div class="panel-body">
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <!-- <purchase (purchaseSender)="getServed(juice, $event)" [sizes]="sizes"></purchase> -->
+        <purchase (purchaseSender)="getServed(juice, $event)" [sizes]="sizes"></purchase>
       </div>
     </div>
   </div>

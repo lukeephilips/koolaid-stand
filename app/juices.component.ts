@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Koolaid } from './koolaid';
+import { Size } from './size';
+
 
 
 
@@ -12,10 +14,19 @@ import { Koolaid } from './koolaid';
 export class JuicesComponent{
   @Input() freshjuice: Koolaid[];
   @Input() filterAttribute: string;
-  // @Input() sizes: Size;
-  // size: string = null;
-  // displaySizes: any[] = []
+  @Input() sizes: Size;
+  @Output() selectedKegSender = new EventEmitter();
+  size: string = null;
+  selectedKeg: Koolaid = null;
 
+  // displaySizes: any[] = []
+  getServed(keg: Koolaid, purchasedSize: string){
+    keg.quantity -= this.sizes[purchasedSize];
+  }
+  selectKeg(keg){
+    this.selectedKegSender.emit(keg);
+
+  }
   kegLevel(kegLevel: number) {
     if (kegLevel <= 64) {
       return "dangerouslyLow";
