@@ -18,8 +18,8 @@ import { PurchaseComponent } from './purchase.component';
 export class AppComponent {
 
   selectedKeg: Koolaid = null;
-  sizes: Size = new Size();
   filterAttribute: string = null;
+  sizes: Size = null;
 
   freshjuice: Koolaid[];
   constructor(private juiceService: JuiceService) {}
@@ -29,10 +29,12 @@ export class AppComponent {
     this.freshjuice = this.juiceService.getJuice();
   }
   ngOnInit(): void {
+    this.sizes = new Size();
     this.getJuice();
     let that = this;
     this.freshjuice.forEach(function(juice){
       that.displayIngredients.push(juice.secretIngredient);
+
     });
   }
 
@@ -45,7 +47,6 @@ export class AppComponent {
 
 
   getServed(keg: Koolaid, purchasedSize: string){
-
     keg.quantity -= this.sizes[purchasedSize];
   }
 

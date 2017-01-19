@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Koolaid } from './koolaid';
 import { Size } from './size';
 
@@ -10,10 +10,15 @@ import { Size } from './size';
 })
 
 export class PurchaseComponent{
-  @Input() sizes: Size;
   @Output() purchaseSender = new EventEmitter();
-
+  @Input() sizes: Size;
   size: string = null;
-  displaySizes: any[] = Object.keys(sizes);
+  displaySizes: any[] = []
 
+  ngOnInit() {
+    this.displaySizes = Object.keys(this.sizes);
+  }
+  purchase(purchasedSize: string) {
+    this.purchaseSender.emit(purchasedSize);
+  }
 }

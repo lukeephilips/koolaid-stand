@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <purchase [sizes]="sizes"></purchase>
+          <purchase (purchaseSender)="getServed(juice, $event)" [sizes]="sizes"></purchase>
         </div>
       </div>
     </div>
