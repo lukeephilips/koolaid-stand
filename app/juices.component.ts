@@ -10,10 +10,5 @@ import { Koolaid } from './koolaid';
 })
 
 export class JuicesComponent{
-  name: string;
-  flavor: string;
-  price: number;
-  secretIngredient: string;
-  
   @Input() freshjuice: Koolaid[];
 }

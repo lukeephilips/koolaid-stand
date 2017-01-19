@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Koolaid } from './koolaid';
+import { Size } from './size';
 import { JuiceService } from './juice.service';
 import { EditJuiceComponent } from './edit-juice.component';
 import { NewJuiceComponent } from './new-juice.component';
-import { FilterJuiceComponent } from './new-juice.component';
+import { FilterJuiceComponent } from './filter-juice.component';
+import { PurchaseComponent } from './purchase.component';
+
 
 
 @Component({
@@ -15,9 +18,7 @@ import { FilterJuiceComponent } from './new-juice.component';
 export class AppComponent {
 
   selectedKeg: Koolaid = null;
-  size: string = null;
-  sizes: Sizes = new Sizes();
-  displaySizes: any[] = Object.keys(this.sizes);
+  sizes: Size = new Size();
   filterAttribute: string = null;
 
   freshjuice: Koolaid[];
@@ -28,11 +29,11 @@ export class AppComponent {
     this.freshjuice = this.juiceService.getJuice();
   }
   ngOnInit(): void {
-      this.getJuice();
-      let that = this;
-      this.freshjuice.forEach(function(juice){
-        that.displayIngredients.push(juice.secretIngredient);
-      });
+    this.getJuice();
+    let that = this;
+    this.freshjuice.forEach(function(juice){
+      that.displayIngredients.push(juice.secretIngredient);
+    });
   }
 
   editKeg(keg){
@@ -77,18 +78,10 @@ filter(ingredient){
   this.filterAttribute = ingredient;
 }
 kegMeter(quantity: number){
+  if (quantity <= 0) {
+    return 0;
+  } else
   return ((quantity / 1984) * 100);
 }
 
-}
-export class Sizes {
-  constructor() {};
-  public taster: number = 4;
-  public pint: number = 12;
-  public howler: number = 32;
-  public growler: number = 64;
-  public boot: number = 67;
-  public bucket: number = 640;
-  public ducket: number = 1280;
-  public keg: number = 1984;
 }
