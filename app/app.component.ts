@@ -19,7 +19,7 @@ export class AppComponent {
   size: string = null;
   sizes: Sizes = new Sizes();
   displaySizes: any[] = Object.keys(this.sizes);
-  filter: string = null;
+  filterAttribute: string = null;
 
   freshjuice: Koolaid[];
   constructor(private juiceService: JuiceService) {}
@@ -50,7 +50,7 @@ export class AppComponent {
   }
 
   newJuice() {
-    this.freshjuice.push(new Koolaid(this.name, this.flavor, parseInt(this.price), this.secretIngredient));
+    this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
     this.addKeg = false;
   }
   getServed(keg: Koolaid, purchasedSize: string){
@@ -84,7 +84,13 @@ tapped(quantity){
   };
 }
 filter(ingredient){
-  this.filter = ingredient;
+  this.filterAttribute = ingredient;
+}
+kegMeter(quantity: number){
+  console.log(quantity)
+  return ((quantity / 1984) * 100);
+}
+
 }
 export class Sizes {
   constructor() {};

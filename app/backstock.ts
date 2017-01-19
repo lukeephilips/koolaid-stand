@@ -11,7 +11,7 @@ export const KOOLAID: Koolaid[] = [
   name: "Furious Grape",
   flavor: "Grape",
   price: 12,
-  secretIngredient: "Codiene",
+  secretIngredient: "Codeine",
   quantity: 1984
 }, {
   name: "Obedient Orange",

@@ -2,6 +2,7 @@
   <h1>Elder Davie's Koolaid Kart</h1>
 
   <!-- Add Keg -->
+  <div class="row">
     <div class="" [ngSwitch]="addKeg">
         <div class="form-group" *ngSwitchCase="true">
 
@@ -22,18 +23,26 @@
         <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>
       </div>
     </div>
-    <div class="input-group">
-      <select class="form-control" id="filter" [(ngModel)]="filter" name="filter">
-        <option *ngFor="let ingredient of displayIngredients" [value]="ingredient">{{ingredient}}</option>
-      </select>
+  </div>
 
+    <!-- filter Keg -->
+  <div class="row">
+    <div class="input-group">
+      <select class="form-control" id="filter" (change)="filter($event.target.value)" name="filter">
+        <option value="all">All</option>
+        <option value="Cyanide">Cyanide</option>
+        <option value="Codeine">Codeine</option>
+        <option value="LSD" >LSD</option>
+        <!-- <option *ngFor="let ingredient of displayIngredients" [value]="ingredient">{{ingredient}}</option> -->
+      </select>
       <span class="input-group-btn" (click)="filter(ingredient)"><button  class="btn">Filter</button></span>
     </div>
+  </div>
 
 <!-- show Keg -->
 <div class="row">
-  <div *ngFor="let juice of freshjuice">
-    <div class="panel col-sm-4" *ngIf="juice.secretIngredient==filter">
+  <div *ngFor="let juice of freshjuice | filter:filterAttribute">
+    <div class="panel col-sm-4">
 
      <div class="panel-heading primaryColor" (click)="editKeg(juice)">
       <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
@@ -49,7 +58,11 @@
           <h3>{{surgePrice(juice)}}</h3>
         </div>
         <div class="col-sm-4">
+          <div class="meter">
+            <div class="meterLevel" [style.height.%]="kegMeter(juice.quantity)">
 
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
