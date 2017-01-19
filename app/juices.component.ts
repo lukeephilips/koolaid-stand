@@ -2,9 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Koolaid } from './koolaid';
 import { Size } from './size';
 
-
-
-
 @Component({
   selector: 'juices',
   templateUrl: './app/juices.component.html'
@@ -28,7 +25,7 @@ export class JuicesComponent{
 
   }
   kegLevel(kegLevel: number) {
-    if (kegLevel <= 64) {
+    if (kegLevel <= 360) {
       return "dangerouslyLow";
     } else if (kegLevel <= 1000) {
       return "keepDrinking";
@@ -47,7 +44,7 @@ export class JuicesComponent{
   }
   tapped(quantity){
     if (quantity <= 0) {
-      return "tapped";
+      return 0;
     } else {
       return quantity;
     };

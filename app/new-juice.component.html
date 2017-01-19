@@ -1,22 +1,20 @@
-<div class="row">
-  <div class="" [ngSwitch]="addKeg">
+  <div class="col-sm-6" [ngSwitch]="addKeg">
       <div class="form-group" *ngSwitchCase="true">
 
       <label for="name">Name</label>
-      <input #name id="name">
+      <input #name id="name" class="form-control">
 
       <label for="flavor">Flavor town</label>
-      <input #flavor id="flavor">
+      <input #flavor id="flavor" class="form-control">
 
       <label for="price">Price</label>
-      <input #price id="price">
+      <input #price id="price" class="form-control">
 
       <label for="secretIngredient">Secret Ingredient</label>
-      <input #secretIngredient id="secretIngredient">
-      <button (click)="newJuice(name.value, flavor.value, price.value, secretIngredient.value)" class="btn">Add</button>
+      <input #secretIngredient id="secretIngredient" class="form-control">
+      <button (click)="newJuice(name.value, flavor.value, price.value, secretIngredient.value)" class="btn secondaryColor">Add</button>
     </div>
     <div class="" *ngSwitchDefault>
-      <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>
+      <button (click)="showAdd()" class="btn btn-lg secondaryColor">Add a Keg</button>
     </div>
   </div>
-</div>

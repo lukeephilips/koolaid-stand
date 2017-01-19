@@ -19,13 +19,15 @@ import { JuicesComponent } from './juices.component';
 
 export class AppComponent {
 
+// variables used between subpages
   selectedKeg: Koolaid = null;
   filterAttribute: string = null;
-  sizes: Size = null;
-
-  freshjuice: Koolaid[];
-  constructor(private juiceService: JuiceService) {}
   displayIngredients: any[] = [];
+
+// instantiated Objects
+  constructor(private juiceService: JuiceService) {}
+  freshjuice: Koolaid[];
+  sizes: Size = null;
 
   getJuice() {
     this.freshjuice = this.juiceService.getJuice();
@@ -38,51 +40,15 @@ export class AppComponent {
       that.displayIngredients.push(juice.secretIngredient);
     });
   }
-
+  
+  // Methods to trigger subpages
+  filter(ingredient){
+    this.filterAttribute = ingredient;
+  }
   editKeg(keg){
     this.selectedKeg = keg;
   }
   addJuice(newJuice){
       this.freshjuice.push(newJuice);
   }
-
-//   getServed(keg: Koolaid, purchasedSize: string){
-//     keg.quantity -= this.sizes[purchasedSize];
-//   }
-//
-//   kegLevel(kegLevel: number) {
-//     if (kegLevel <= 64) {
-//       return "dangerouslyLow";
-//     } else if (kegLevel <= 1000) {
-//       return "keepDrinking";
-//     } else {
-//       return "bringAllYrFwendz";
-//     }
-//   }
-//   surgePrice(keg){
-//     if (keg.quantity >= 1000) {
-//     return keg.price;
-//   } else if (keg.quantity > 64) {
-//     return keg.price -2;
-//   } else {
-//     return 2;
-//   };
-// }
-// tapped(quantity){
-//   if (quantity <= 0) {
-//     return "tapped";
-//   } else {
-//     return quantity;
-//   };
-// }
-filter(ingredient){
-  this.filterAttribute = ingredient;
-}
-// kegMeter(quantity: number){
-//   if (quantity <= 0) {
-//     return 0;
-//   } else
-//   return ((quantity / 1984) * 100);
-// }
-
 }

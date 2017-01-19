@@ -5,7 +5,7 @@
     <div class="panel col-sm-4">
 
        <div class="panel-heading primaryColor" (click)="selectKeg(juice)">
-        <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
+        <h1>{{juice.name}}</h1>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -13,13 +13,13 @@
             <h3>Flavor: {{juice.flavor}}</h3>
             <span>Secret Ingredient: {{juice.secretIngredient}}</span>
             <div class="kegQuantity">
-              <span [class]="kegLevel(juice.quantity)">{{tapped(juice.quantity)}}</span><span> ounces remaining</span>
+              <span>{{tapped(juice.quantity)}}</span><span> ounces remaining</span>
             </div>
-            <h3>{{surgePrice(juice)}}</h3>
+            <h3>${{surgePrice(juice)}}</h3>
           </div>
           <div class="col-sm-4">
             <div class="meter">
-              <div class="meterLevel" [style.height.%]="kegMeter(juice.quantity)">
+              <div id="meterLevel" [class]="kegLevel(juice.quantity)" [style.height.%]="kegMeter(juice.quantity)">
               </div>
             </div>
           </div>

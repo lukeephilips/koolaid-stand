@@ -20,7 +20,7 @@ export class NewJuiceComponent{
   secretIngredient: string;
 
   newJuice(name, flavor, price, secretIngredient) {
-    var newJuice: Koolaid = new Koolaid(name, flavor, price, secretIngredient);
+    var newJuice: Koolaid = new Koolaid(name, flavor, parseInt(price), secretIngredient);
     this.newJuiceSender.emit(newJuice);
     this.addKeg = false;
   }

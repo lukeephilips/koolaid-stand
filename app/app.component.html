@@ -1,45 +1,21 @@
 <div class="container">
-  <h1>Elder Davie's Koolaid Kart</h1>
-
+<div class="jumbotron primaryColor">
+  <h1 class="text-center">Elder Davie's Koolaid Kart</h1>
+</div>
+  <div class="row">
+    <div class="col-sm-9">
+      <new-juice (newJuiceSender)="addJuice($event)" ></new-juice>
+    </div>
+    <div class="col-sm-3 align-right">
+      <filter-juice (filterSender)="filter($event)"></filter-juice>
+    </div>
+  </div>
   <!-- Add Keg -->
-  <new-juice (newJuiceSender)="addJuice($event)" ></new-juice>
 
   <!-- filter Keg -->
-  <filter-juice (filterSender)="filter($event)"></filter-juice>
 
   <!-- show Keg -->
   <juices [freshjuice]="freshjuice" [filterAttribute]="filterAttribute" [sizes]="sizes" (selectedKegSender)="editKeg($event)"></juices>
-  <!-- <div class="row">
-    <div *ngFor="let juice of freshjuice | filter:filterAttribute">
-      <div class="panel col-sm-4">
-
-         <div class="panel-heading primaryColor" (click)="editKeg(juice)">
-          <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-8">
-              <h3>Flavor: {{juice.flavor}}</h3>
-              <span>Secret Ingredient: {{juice.secretIngredient}}</span>
-              <div class="kegQuantity">
-                <span [class]="kegLevel(juice.quantity)">{{tapped(juice.quantity)}}</span><span> ounces remaining</span>
-              </div>
-              <h3>{{surgePrice(juice)}}</h3>
-            </div>
-            <div class="col-sm-4">
-              <div class="meter">
-                <div class="meterLevel" [style.height.%]="kegMeter(juice.quantity)">
-                </div>
-              </div>
-            </div>
-          </div>
-          <purchase (purchaseSender)="getServed(juice, $event)" [sizes]="sizes"></purchase>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
 
   <!-- Update Keg -->
   <edit-juice [childSelectedKeg]="selectedKeg"></edit-juice>
