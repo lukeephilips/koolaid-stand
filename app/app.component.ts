@@ -6,6 +6,8 @@ import { EditJuiceComponent } from './edit-juice.component';
 import { NewJuiceComponent } from './new-juice.component';
 import { FilterJuiceComponent } from './filter-juice.component';
 import { PurchaseComponent } from './purchase.component';
+import { JuicesComponent } from './juices.component';
+
 
 
 
@@ -34,7 +36,6 @@ export class AppComponent {
     let that = this;
     this.freshjuice.forEach(function(juice){
       that.displayIngredients.push(juice.secretIngredient);
-
     });
   }
 
@@ -44,7 +45,6 @@ export class AppComponent {
   addJuice(newJuice){
       this.freshjuice.push(newJuice);
   }
-
 
   getServed(keg: Koolaid, purchasedSize: string){
     keg.quantity -= this.sizes[purchasedSize];
