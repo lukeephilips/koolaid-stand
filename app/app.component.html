@@ -22,11 +22,20 @@
         <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>
       </div>
     </div>
+    <div class="input-group">
+      <select class="form-control" id="filter" [(ngModel)]="filter" name="filter">
+        <option *ngFor="let ingredient of displayIngredients" [value]="ingredient">{{ingredient}}</option>
+      </select>
+
+      <span class="input-group-btn" (click)="filter(ingredient)"><button  class="btn">Filter</button></span>
+    </div>
 
 <!-- show Keg -->
 <div class="row">
-  <div class="panel col-sm-4" *ngFor="let juice of freshjuice">
-    <div class="panel-heading primaryColor" (click)="editKeg(juice)">
+  <div *ngFor="let juice of freshjuice">
+    <div class="panel col-sm-4" *ngIf="juice.secretIngredient==filter">
+
+     <div class="panel-heading primaryColor" (click)="editKeg(juice)">
       <h1 [class]="kegLevel(juice.quantity)">{{juice.name}}</h1>
     </div>
     <div class="panel-body">
@@ -35,9 +44,9 @@
           <h3>Flavor: {{juice.flavor}}</h3>
           <span>Secret Ingredient: {{juice.secretIngredient}}</span>
           <div class="kegQuantity">
-            <span [class]="kegLevel(juice.quantity)" >{{juice.quantity}}</span><span> ounces remaining</span>
+            <span [class]="kegLevel(juice.quantity)">{{tapped(juice.quantity)}}</span><span> ounces remaining</span>
           </div>
-          <h3>${{juice.price}}</h3>
+          <h3>{{surgePrice(juice)}}</h3>
         </div>
         <div class="col-sm-4">
 
@@ -55,6 +64,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 
