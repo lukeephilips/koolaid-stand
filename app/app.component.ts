@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Koolaid } from './koolaid';
 import { JuiceService } from './juice.service';
 import { EditJuiceComponent } from './edit-juice.component';
-
-
+import { NewJuiceComponent } from './new-juice.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,6 @@ export class AppComponent {
   flavor: string;
   price: number;
   secretIngredient: string;
-  addKeg: boolean = false;
   selectedKeg: Koolaid = null;
   size: string = null;
   sizes: Sizes = new Sizes();
@@ -38,24 +36,12 @@ export class AppComponent {
       });
   }
 
-  showAdd() {
-    this.addKeg = true;
-  }
-  hideAdd() {
-    this.addKeg = false;
-  }
   editKeg(keg){
     this.selectedKeg = keg;
     console.log(this.selectedKeg)
   }
-  hideEdit() {
-    this.selectedKeg = null;
-  }
 
-  newJuice() {
-    this.freshjuice.push(new Koolaid(this.name, this.flavor, this.price, this.secretIngredient));
-    this.addKeg = false;
-  }
+
   getServed(keg: Koolaid, purchasedSize: string){
 
     keg.quantity -= this.sizes[purchasedSize];

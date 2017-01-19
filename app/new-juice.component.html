@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="" [ngSwitch]="addKeg">
+      <div class="form-group" *ngSwitchCase="true">
+
+      <label for="name">Name</label>
+      <input [(ngModel)]="name" id="name">
+
+      <label for="flavor">Flavor town</label>
+      <input [(ngModel)]="flavor" id="flavor">
+
+      <label for="price">Price</label>
+      <input [(ngModel)]="price" id="price">
+
+      <label for="secretIngredient">Secret Ingredient</label>
+      <input [(ngModel)]="secretIngredient" id="secretIngredient">
+      <button (click)="newJuice()" class="btn">Add</button>
+    </div>
+    <div class="" *ngSwitchDefault>
+      <button (click)="showAdd()" class="btn btn-lg">Add a Keg</button>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent }   from './app.component';
 import { FilterPipe } from './filter.pipe';
 import { EditJuiceComponent } from './edit-juice.component';
+import { NewJuiceComponent } from './new-juice.component';
+
 
 
 @NgModule({
@@ -11,7 +13,7 @@ import { EditJuiceComponent } from './edit-juice.component';
     BrowserModule,
     FormsModule
  ],
-  declarations: [ AppComponent, FilterPipe, EditJuiceComponent ],
+  declarations: [ AppComponent, FilterPipe, EditJuiceComponent, NewJuiceComponent ],
   bootstrap:    [ AppComponent ]
 })
 
