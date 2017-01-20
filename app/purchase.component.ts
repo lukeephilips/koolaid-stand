@@ -11,6 +11,7 @@ import { Size } from './size';
 
 export class PurchaseComponent{
   @Output() purchaseSender = new EventEmitter();
+  @Output() sizeSender = new EventEmitter();
   @Input() sizes: Size;
   size: string = null;
   displaySizes: any[] = []
@@ -20,5 +21,8 @@ export class PurchaseComponent{
   }
   purchase(purchasedSize: string) {
     this.purchaseSender.emit(purchasedSize);
+  }
+  sendSize(size){
+    this.sizeSender.emit(size);
   }
 }

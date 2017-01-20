@@ -13,8 +13,13 @@ export class JuicesComponent{
   @Input() filterAttribute: string;
   @Input() sizes: Size;
   @Output() selectedKegSender = new EventEmitter();
+  @Input() selectedSize: Size;
+
   size: string = null;
   selectedKeg: Koolaid = null;
+
+  calculatedPrice: int = 0;
+
 
   // displaySizes: any[] = []
   getServed(keg: Koolaid, purchasedSize: string){
@@ -33,15 +38,19 @@ export class JuicesComponent{
       return "bringAllYrFwendz";
     }
   }
-  surgePrice(keg){
-    if (keg.quantity >= 1000) {
-      return keg.price;
-    } else if (keg.quantity > 64) {
-      return keg.price -2;
-    } else {
-      return 2;
-    };
+  surgePrice(keg, size){
+    console.log(size)
+    if (size){
+      if (keg.quantity >= 1000) {
+        this.calculatedPrice = Math.round(keg.price * this.sizes[size]);
+      } else if (keg.quantity > 360) {
+        this.calculatedPrice = Math.round(keg.price * this.sizes[size] * .5);
+      } else {
+        this.calculatedPrice = 2;
+      };
+    }
   }
+  
   tapped(quantity){
     if (quantity <= 0) {
       return 0;

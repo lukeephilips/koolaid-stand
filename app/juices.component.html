@@ -15,7 +15,7 @@
             <div class="kegQuantity">
               <span>{{tapped(juice.quantity)}}</span><span> ounces remaining</span>
             </div>
-            <h3>${{surgePrice(juice)}}</h3>
+            <h3>${{calculatedPrice}}</h3>
           </div>
           <div class="col-sm-4">
             <div class="meter">
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <purchase (purchaseSender)="getServed(juice, $event)" [sizes]="sizes"></purchase>
+        <purchase (purchaseSender)="getServed(juice, $event)" (sizeSender)="surgePrice(juice, $event)"[sizes]="sizes"></purchase>
       </div>
     </div>
   </div>

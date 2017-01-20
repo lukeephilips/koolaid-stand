@@ -1,7 +1,7 @@
 <div class="row">
   <label for="size">Select a size</label>
   <div class="input-group">
-    <select class="form-control" id="size" [(ngModel)]="size" name="size" required>
+    <select class="form-control" id="size" [(ngModel)]="size" name="size" (change)="sendSize($event.target.value)">
       <option *ngFor="let size of displaySizes" [value]="size">{{size}}</option>
     </select>
     <span class="input-group-btn"><button (click)="purchase( size)" class="btn secondaryColor">Purchase</button></span>

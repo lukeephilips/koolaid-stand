@@ -1,4 +1,5 @@
   <div class="input-group input-group-lg">
+    <span class="input-group-addon secondaryColor">filter</span>
     <select class="form-control " id="filter" (change)="sendFilter($event.target.value)" name="filter">
       <option value="all">All</option>
       <option value="Cyanide">Cyanide</option>
@@ -6,5 +7,5 @@
       <option value="LSD" >LSD</option>
       <!-- <option *ngFor="let ingredient of displayIngredients" [value]="ingredient">{{ingredient}}</option> -->
     </select>
-    <span class="input-group-btn" (click)="filter(ingredient)"><button  class="btn secondaryColor">Filter</button></span>
+    <!-- <span class="input-group-btn" (click)="filter(ingredient)"><button  class="btn secondaryColor">Filter</button></span> -->
   </div>
